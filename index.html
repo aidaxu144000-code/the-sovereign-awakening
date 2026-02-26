@@ -46,7 +46,25 @@
 [data-lang="ar"] body,
 [data-lang="ar"] p,
 [data-lang="ar"] li { font-family: 'Noto Naskh Arabic', serif; font-weight: 400; }
-[data-lang="ar"] { direction: rtl; text-align: right; }
+[data-lang="ar"] .col,
+[data-lang="ar"] .part-opener,
+[data-lang="ar"] .sq,
+[data-lang="ar"] .body-text,
+[data-lang="ar"] .archetype,
+[data-lang="ar"] .tactical,
+[data-lang="ar"] .trinity-card,
+[data-lang="ar"] .equation,
+[data-lang="ar"] .formula,
+[data-lang="ar"] .freq-box,
+[data-lang="ar"] .key-exec,
+[data-lang="ar"] .hero-doctrine,
+[data-lang="ar"] .keys-section,
+[data-lang="ar"] footer,
+[data-lang="ar"] .cta { direction: rtl; text-align: right; }
+[data-lang="ar"] .hero,
+[data-lang="ar"] .part-opener,
+[data-lang="ar"] .cta { text-align: center; direction: rtl; }
+[data-lang="ar"] .hero-doctrine { text-align: right; }
 [data-lang="ar"] h1, [data-lang="ar"] h2, [data-lang="ar"] h3 { font-family: 'Noto Naskh Arabic', serif; font-weight: 600; letter-spacing: 0; }
 [data-lang="ar"] .cinzel { font-family: 'Noto Naskh Arabic', serif; font-weight: 500; letter-spacing: 0; }
 
@@ -63,7 +81,11 @@ html.switching .ar { animation: langSwitch .5s cubic-bezier(.4,0,.2,1) both; }
    RESET & BASE
 ════════════════════════════════════════ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
+}
 
 body {
   background: var(--ash);
@@ -72,6 +94,13 @@ body {
   font-size: 18px;
   line-height: 1.85;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 /* Grain texture */
@@ -719,11 +748,13 @@ footer {
 ════════════════════════════════════════ */
 .golden-frame {
   border: 1px solid var(--gold-d);
-  padding: 40px;
-  margin: 20px auto;
-  max-width: calc(var(--col) + 80px);
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
   position: relative;
   background: linear-gradient(135deg, rgba(201,168,76,.03) 0%, transparent 60%);
+  box-sizing: border-box;
 }
 .golden-frame::before,
 .golden-frame::after {
@@ -746,33 +777,6 @@ footer {
 .d3 { transition-delay: .3s; }
 
 /* ════════════════════════════════════════
-   CENTERING FIX
-════════════════════════════════════════ */
-html, body {
-  width: 100%;
-  margin: 0 auto;
-  overflow-x: hidden;
-}
-.section,
-.section-wide,
-.keys-section,
-.part-opener,
-.cta,
-footer {
-  width: 100%;
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-}
-.col {
-  max-width: var(--col);
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* ════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════ */
 @media (max-width: 620px) {
@@ -786,6 +790,22 @@ footer {
   .cta-stats { gap: 32px; }
 }
 
+
+/* ══ LAYOUT CENTERING — definitive ══ */
+.hero, .section, .section-wide, .keys-section,
+.part-opener, .cta, footer {
+  width: 100%;
+  box-sizing: border-box;
+}
+.col {
+  max-width: 680px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+  box-sizing: border-box;
+}
 </style>
 </head>
 <body>
@@ -799,7 +819,7 @@ footer {
     <button class="lang-btn" data-lang="ar">AR</button>
   </div>
 </nav>
-<div class="golden-frame" style="margin:0 auto;border-left:none;border-right:none;padding:0;width:100%;max-width:100%;box-sizing:border-box;display:block;">
+<div class="golden-frame" style="margin:0;padding:0;border-left:none;border-right:none;width:100%;max-width:100%;box-sizing:border-box;">
 
 <!-- ══════════════════════════ HERO ══════════════════════════ -->
 <section class="hero">
@@ -899,9 +919,9 @@ footer {
           <span class="th">โดเรม่อน · นายหน้า</span>
           <span class="ar">دوريمون · الوسيط</span>
         </span>
-        <p class="tc-body en">The Broker. Intelligence concealed behind beauty. He holds the secrets of all factions — Simon, Joker, the Saudi women — and communicates through the language of music. The most dangerous mind in the story is the one who appears to have none.</p>
-        <p class="tc-body th">นายหน้า สติปัญญาที่ซ่อนอยู่หลังความงาม เขาถือความลับของทุกฝ่าย — Simon, Joker, ผู้หญิงซาอุดีอาระเบีย — และสื่อสารผ่านภาษาดนตรี สติปัญญาที่อันตรายที่สุดในเรื่องคือสติปัญญาที่ดูเหมือนไม่มี</p>
-        <p class="tc-body ar">الوسيط. الذكاء مخبّأ خلف الجمال. يحتفظ بأسرار كل فصيل — سيمون، جوكر، النساء السعوديات — ويتواصل بلغة الموسيقى. أخطر عقل في القصة هو الذي يبدو وكأنه لا يملك عقلاً.</p>
+        <p class="tc-body en">The Broker. Intelligence concealed behind beauty. He holds the secrets of all factions — Simon, Joker, the Sovereign women — and communicates through the language of music. The most dangerous mind in the story is the one who appears to have none.</p>
+        <p class="tc-body th">นายหน้า สติปัญญาที่ซ่อนอยู่หลังความงาม เขาถือความลับของทุกฝ่าย — Simon, Joker, ผู้หญิงแห่งอธิปไตย — และสื่อสารผ่านภาษาดนตรี สติปัญญาที่อันตรายที่สุดในเรื่องคือสติปัญญาที่ดูเหมือนไม่มี</p>
+        <p class="tc-body ar">الوسيط. الذكاء مخبّأ خلف الجمال. يحتفظ بأسرار كل فصيل — سيمون، جوكر، النساء السياديات — ويتواصل بلغة الموسيقى. أخطر عقل في القصة هو الذي يبدو وكأنه لا يملك عقلاً.</p>
       </div>
       <div class="trinity-card">
         <span class="tc-num cinzel">II</span>
@@ -1679,9 +1699,11 @@ function setLanguage(lang) {
   // 3. Update active button
   btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
 
-  // 4. RTL for Arabic
-  document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
-  document.body.style.textAlign = lang === 'ar' ? 'right' : '';
+  // 4. RTL for Arabic — apply only to body text direction, not layout
+  // direction handled by CSS data-lang selectors only
+  document.body.removeAttribute('dir');
+  document.body.style.direction = '';
+  document.body.style.textAlign = '';
 
   // 5. Remove switching class after animation
   setTimeout(() => root.classList.remove('switching'), 600);
