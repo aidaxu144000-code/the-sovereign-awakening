@@ -103,4 +103,1487 @@ body::before {
 /* Language pill */
 .lang-pill {
   display: flex;
-  border:
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.lang-btn {
+  padding: 8px 20px;
+  background: transparent; border: none; cursor: pointer;
+  font-family: 'Cinzel', serif;
+  font-size: 8px; letter-spacing: .45em; text-transform: uppercase;
+  color: var(--bone-3);
+  transition: background .2s, color .2s;
+  position: relative;
+}
+.lang-btn + .lang-btn { border-left: 1px solid var(--line); }
+.lang-btn:hover { color: var(--bone-2); }
+.lang-btn.active {
+  background: var(--gold);
+  color: var(--ash);
+}
+
+/* ════════════════════════════════════════
+   COLUMN WRAPPER
+════════════════════════════════════════ */
+.col {
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 140px 32px 100px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 35%, rgba(201,168,76,.075) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 40% at 15% 75%, rgba(201,168,76,.03) 0%, transparent 60%),
+    radial-gradient(ellipse 25% 35% at 85% 65%, rgba(201,168,76,.025) 0%, transparent 60%);
+}
+
+.hero-sigil {
+  width: 240px; height: 240px;
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -53%);
+  opacity: .045;
+  animation: spin 100s linear infinite;
+}
+@keyframes spin { to { transform: translate(-50%,-53%) rotate(360deg); } }
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 8px; letter-spacing: .7em; text-transform: uppercase;
+  color: var(--gold-d);
+  margin-bottom: 36px; position: relative;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(46px, 9vw, 106px);
+  font-weight: 900; line-height: .95; letter-spacing: .025em;
+  background: linear-gradient(150deg, var(--bone-2) 0%, var(--gold-l) 38%, var(--bone) 58%, var(--gold) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px; position: relative;
+}
+
+.hero-subtitle {
+  font-style: italic; font-size: clamp(14px, 1.6vw, 18px);
+  color: var(--bone-3); letter-spacing: .22em;
+  margin-bottom: 72px; position: relative;
+}
+
+.hero-doctrine {
+  max-width: 520px; width: 100%;
+  padding: 36px 44px;
+  border-left: 2px solid var(--gold-d);
+  text-align: left; position: relative;
+}
+
+.hero-doctrine-quote {
+  font-size: clamp(16px, 1.65vw, 21px);
+  font-style: italic; color: var(--bone-2);
+  line-height: 1.6; position: relative;
+}
+[data-lang="th"] .hero-doctrine-quote,
+[data-lang="ar"] .hero-doctrine-quote { font-style: normal; }
+
+.hero-doctrine-quote em {
+  color: var(--gold); font-style: normal;
+}
+
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: .55em;
+  color: var(--bone-3); text-transform: uppercase;
+  animation: bob 2.6s ease-in-out infinite;
+}
+@keyframes bob {
+  0%,100% { opacity:.25; transform: translateX(-50%) translateY(0); }
+  50%      { opacity:.65; transform: translateX(-50%) translateY(8px); }
+}
+
+/* ════════════════════════════════════════
+   SECTION SPACING
+════════════════════════════════════════ */
+.section {
+  padding: 80px 32px;
+  border-top: 1px solid rgba(201,168,76,.06);
+}
+.section-wide {
+  padding: 64px 32px;
+  background: var(--ash-2);
+  border-top: 1px solid rgba(201,168,76,.08);
+}
+
+/* ════════════════════════════════════════
+   PART OPENER
+════════════════════════════════════════ */
+.part-opener {
+  padding: 110px 32px 72px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.part-opener::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 55% 65% at 50% 50%, rgba(201,168,76,.055) 0%, transparent 70%);
+}
+
+.part-number {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 8px; letter-spacing: .75em; text-transform: uppercase;
+  color: var(--gold-d); margin-bottom: 22px; position: relative;
+}
+
+.part-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(28px, 4.5vw, 58px);
+  font-weight: 700; letter-spacing: .025em; line-height: 1.12;
+  color: var(--gold-l);
+  margin-bottom: 30px; position: relative;
+}
+[data-lang="th"] .part-title,
+[data-lang="ar"] .part-title { letter-spacing: 0; }
+
+.part-rule {
+  width: 160px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-d), transparent);
+  margin: 0 auto 28px;
+}
+
+.part-epigraph {
+  font-style: italic; color: var(--bone-3);
+  font-size: clamp(15px, 1.45vw, 19px);
+  max-width: 520px; margin: 0 auto; position: relative;
+  line-height: 1.75;
+}
+[data-lang="th"] .part-epigraph,
+[data-lang="ar"] .part-epigraph { font-style: normal; }
+
+/* ════════════════════════════════════════
+   SCENE LABELS & TITLES
+════════════════════════════════════════ */
+.scene-label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 7.5px; letter-spacing: .65em; text-transform: uppercase;
+  color: var(--gold-d); margin-bottom: 14px;
+}
+
+.scene-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(20px, 2.6vw, 32px);
+  font-weight: 700; color: var(--gold-l);
+  letter-spacing: .02em; line-height: 1.25;
+  margin-bottom: 44px;
+}
+[data-lang="th"] .scene-title,
+[data-lang="ar"] .scene-title { letter-spacing: 0; }
+
+.sub-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-style: italic; color: var(--bone-3);
+  margin: 60px 0 22px;
+}
+[data-lang="th"] .sub-title,
+[data-lang="ar"] .sub-title { font-style: normal; }
+
+/* ════════════════════════════════════════
+   BODY TEXT
+════════════════════════════════════════ */
+.body-text {
+  font-size: clamp(15px, 1.35vw, 18px);
+  color: var(--bone); line-height: 1.9;
+  margin-bottom: 26px;
+}
+
+/* ════════════════════════════════════════
+   SOVEREIGN QUOTE
+════════════════════════════════════════ */
+.sq {
+  margin: 60px 0;
+  padding: 44px 52px;
+  border-left: 3px solid var(--gold);
+  background: linear-gradient(135deg, rgba(201,168,76,.06) 0%, transparent 55%);
+  position: relative;
+}
+.sq::before {
+  content: '"';
+  position: absolute; top: -20px; left: 36px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 110px; line-height: 1; color: var(--gold); opacity: .1;
+}
+[data-lang="ar"] .sq { border-left: none; border-right: 3px solid var(--gold); }
+[data-lang="ar"] .sq::before { left: auto; right: 36px; }
+
+.sq blockquote {
+  font-size: clamp(17px, 1.8vw, 24px);
+  font-style: italic; color: var(--gold-l);
+  line-height: 1.55; position: relative; z-index: 1;
+}
+[data-lang="th"] .sq blockquote,
+[data-lang="ar"] .sq blockquote { font-style: normal; }
+
+.sq cite {
+  display: block; margin-top: 18px;
+  font-family: 'Cinzel', serif; font-size: 8px;
+  letter-spacing: .42em; color: var(--bone-3); font-style: normal;
+  position: relative; z-index: 1;
+}
+
+/* ════════════════════════════════════════
+   ARCHETYPE BOX
+════════════════════════════════════════ */
+.archetype {
+  margin: 40px 0; padding: 34px 40px;
+  border: 1px solid var(--gold-dim);
+  background: var(--ash-2);
+  position: relative;
+}
+.archetype::before {
+  content: attr(data-label);
+  position: absolute; top: -10px;
+  left: 24px;
+  background: var(--ash);
+  padding: 0 10px;
+  font-family: 'Cinzel', serif; font-size: 7px;
+  letter-spacing: .5em; color: var(--gold); text-transform: uppercase;
+}
+[data-lang="ar"] .archetype::before { left: auto; right: 24px; }
+
+.archetype .arch-name {
+  display: block;
+  font-family: 'Cinzel', serif; font-size: 14px;
+  color: var(--gold); margin-bottom: 12px; letter-spacing: .08em;
+}
+[data-lang="th"] .archetype .arch-name,
+[data-lang="ar"] .archetype .arch-name { letter-spacing: 0; }
+
+.archetype p {
+  font-size: clamp(14px, 1.25vw, 16px);
+  color: var(--bone-2); line-height: 1.8;
+}
+
+/* ════════════════════════════════════════
+   TRINITY CARDS  — single col stacked
+════════════════════════════════════════ */
+.trinity-stack { margin: 44px 0; }
+.trinity-card {
+  padding: 28px 36px;
+  border-left: 2px solid var(--gold-d);
+  margin-bottom: 20px;
+  background: var(--ash-2);
+  transition: border-color .3s;
+}
+.trinity-card:hover { border-color: var(--gold); }
+[data-lang="ar"] .trinity-card { border-left: none; border-right: 2px solid var(--gold-d); }
+[data-lang="ar"] .trinity-card:hover { border-color: var(--gold); }
+
+.tc-num {
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: .5em; color: var(--gold-d);
+  text-transform: uppercase; margin-bottom: 8px; display: block;
+}
+.tc-name {
+  font-family: 'Cinzel', serif; font-size: 16px;
+  color: var(--gold-l); margin-bottom: 4px; font-weight: 600;
+}
+[data-lang="th"] .tc-name,
+[data-lang="ar"] .tc-name { letter-spacing: 0; }
+.tc-nick {
+  font-style: italic; color: var(--bone-3);
+  font-size: 14px; margin-bottom: 14px; display: block;
+}
+[data-lang="th"] .tc-nick,
+[data-lang="ar"] .tc-nick { font-style: normal; }
+.tc-body { font-size: clamp(14px,1.25vw,16px); color: var(--bone-2); line-height: 1.8; }
+
+/* ════════════════════════════════════════
+   TACTICAL BOX
+════════════════════════════════════════ */
+.tactical {
+  margin: 48px 0; padding: 36px 40px;
+  border-left: 2px solid var(--red-dark);
+  background: linear-gradient(135deg, rgba(122,46,46,.07) 0%, transparent 55%);
+}
+[data-lang="ar"] .tactical { border-left: none; border-right: 2px solid var(--red-dark); }
+
+.tactical-label {
+  display: block;
+  font-family: 'Cinzel', serif; font-size: 7.5px;
+  letter-spacing: .55em; color: #B84040;
+  text-transform: uppercase; margin-bottom: 22px;
+}
+
+.tactical ul { list-style: none; }
+.tactical li {
+  font-size: clamp(14px,1.25vw,16px);
+  color: var(--bone-2); line-height: 1.8;
+  padding: 10px 0 10px 28px;
+  position: relative;
+  border-bottom: 1px solid rgba(201,168,76,.06);
+}
+[data-lang="ar"] .tactical li { padding: 10px 28px 10px 0; }
+.tactical li:last-child { border-bottom: none; }
+.tactical li::before {
+  content: '◆';
+  position: absolute; left: 0; top: 14px;
+  color: var(--gold-d); font-size: 7px;
+}
+[data-lang="ar"] .tactical li::before { left: auto; right: 0; }
+
+/* ════════════════════════════════════════
+   FREQUENCY BOX
+════════════════════════════════════════ */
+.freq-box {
+  margin: 60px 0; padding: 60px 40px;
+  background: var(--ash-3); border: 1px solid var(--gold-dim);
+  text-align: center; position: relative; overflow: hidden;
+}
+.freq-box::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 75% at 50% 100%, rgba(201,168,76,.07) 0%, transparent 70%);
+}
+.freq-label-top {
+  display: block;
+  font-family: 'Cinzel', serif; font-size: 8px;
+  letter-spacing: .55em; color: var(--gold-d); text-transform: uppercase;
+  margin-bottom: 20px; position: relative; z-index: 1;
+}
+.freq-number {
+  font-family: 'Cinzel', serif; font-size: 88px; font-weight: 900;
+  background: linear-gradient(135deg, var(--gold-d), var(--gold-l), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1; margin-bottom: 14px; position: relative; z-index: 1;
+}
+.freq-label-bottom {
+  font-style: italic; font-size: 17px; color: var(--bone-2);
+  position: relative; z-index: 1;
+}
+[data-lang="th"] .freq-label-bottom,
+[data-lang="ar"] .freq-label-bottom { font-style: normal; }
+
+/* ════════════════════════════════════════
+   EQUATION
+════════════════════════════════════════ */
+.equation {
+  margin: 48px 0; padding: 48px 44px;
+  background: var(--ash-3); border: 1px solid var(--gold-dim);
+  position: relative; overflow: hidden;
+}
+.equation::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 50% 100%, rgba(201,168,76,.055) 0%, transparent 70%);
+}
+.equation-label {
+  display: block;
+  font-family: 'Cinzel', serif; font-size: 7.5px; letter-spacing: .55em;
+  color: var(--gold-d); text-transform: uppercase;
+  margin-bottom: 28px; position: relative; z-index: 1;
+}
+.eq-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(15px, 1.5vw, 20px);
+  font-style: italic; color: var(--bone);
+  line-height: 2; position: relative; z-index: 1;
+}
+[data-lang="th"] .eq-line,
+[data-lang="ar"] .eq-line { font-style: normal; }
+.eq-line .op { color: var(--gold); margin: 0 10px; font-style: normal; }
+.eq-line .res { color: var(--gold-l); }
+.eq-div {
+  width: 180px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-d), transparent);
+  margin: 2px 0; position: relative; z-index: 1;
+}
+
+/* ════════════════════════════════════════
+   IMAGE PROMPT
+════════════════════════════════════════ */
+.img-prompt {
+  margin: 44px 0; padding: 24px 32px;
+  border: 1px dashed rgba(201,168,76,.16);
+  background: rgba(201,168,76,.018);
+}
+.img-prompt-label {
+  display: block;
+  font-family: 'Cinzel', serif; font-size: 7px;
+  letter-spacing: .6em; color: var(--gold-d); text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.img-prompt p { font-size: 13px; color: var(--bone-3); font-style: italic; line-height: 1.7; }
+[data-lang="th"] .img-prompt p,
+[data-lang="ar"] .img-prompt p { font-style: normal; }
+
+/* ════════════════════════════════════════
+   SOVEREIGN KEYS SECTION
+════════════════════════════════════════ */
+.keys-section {
+  padding: 72px 32px;
+  background: linear-gradient(180deg, rgba(201,168,76,.03) 0%, transparent 100%);
+  border-top: 1px solid rgba(201,168,76,.1);
+}
+
+.keys-header { text-align: center; margin-bottom: 52px; }
+
+.keys-overline {
+  display: block; font-family: 'Cinzel', serif;
+  font-size: 7.5px; letter-spacing: .6em; color: var(--gold-d);
+  text-transform: uppercase; margin-bottom: 12px;
+}
+
+.keys-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(16px, 1.8vw, 22px); font-weight: 600;
+  color: var(--gold);
+}
+[data-lang="th"] .keys-title,
+[data-lang="ar"] .keys-title { letter-spacing: 0; }
+
+.key-item {
+  display: grid; grid-template-columns: 52px 1fr;
+  gap: 0 24px; align-items: start;
+  max-width: var(--col); margin: 0 auto 38px;
+  padding-bottom: 38px;
+  border-bottom: 1px solid rgba(201,168,76,.08);
+}
+.key-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+.key-num {
+  font-family: 'Cinzel', serif; font-size: 34px; font-weight: 900;
+  color: var(--gold-d); line-height: 1.1; opacity: .5;
+}
+
+.key-concept {
+  font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--bone); font-weight: 600;
+  margin-bottom: 10px;
+}
+[data-lang="th"] .key-concept,
+[data-lang="ar"] .key-concept { letter-spacing: 0; font-size: 14px; }
+
+.key-exec {
+  font-size: clamp(14px, 1.3vw, 16px);
+  color: var(--bone-3); font-style: italic; line-height: 1.8;
+}
+[data-lang="th"] .key-exec,
+[data-lang="ar"] .key-exec { font-style: normal; }
+.key-arrow { color: var(--gold); margin-right: 6px; }
+
+/* ════════════════════════════════════════
+   SOVEREIGN FORMULA
+════════════════════════════════════════ */
+.formula {
+  max-width: var(--col); margin: 56px auto 0;
+  padding: 44px 40px;
+  background: var(--ash-3); border: 1px solid var(--gold-dim);
+  text-align: center; position: relative; overflow: hidden;
+}
+.formula::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 75% at 50% 100%, rgba(201,168,76,.06) 0%, transparent 70%);
+}
+.formula-label {
+  display: block; font-family: 'Cinzel', serif;
+  font-size: 7.5px; letter-spacing: .55em; color: var(--gold-d);
+  text-transform: uppercase; margin-bottom: 26px; position: relative; z-index: 1;
+}
+.f-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(15px,1.45vw,19px); font-style: italic;
+  color: var(--bone); line-height: 2;
+  position: relative; z-index: 1;
+}
+[data-lang="th"] .f-line,
+[data-lang="ar"] .f-line { font-style: normal; }
+.f-line .op { color: var(--gold); margin: 0 8px; font-style: normal; }
+.f-line .res { color: var(--gold-l); }
+.f-div {
+  width: 180px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-d), transparent);
+  margin: 2px auto; position: relative; z-index: 1;
+}
+
+/* ════════════════════════════════════════
+   GOLD DIVIDER
+════════════════════════════════════════ */
+.gold-div {
+  display: flex; align-items: center; gap: 16px;
+  margin: 56px 0;
+}
+.gold-div::before, .gold-div::after { content: ''; flex: 1; height: 1px; }
+.gold-div::before { background: linear-gradient(90deg,transparent,var(--gold-d)); }
+.gold-div::after  { background: linear-gradient(90deg,var(--gold-d),transparent); }
+.gold-div span { color: var(--gold-d); font-size: 11px; }
+
+/* ════════════════════════════════════════
+   CTA
+════════════════════════════════════════ */
+.cta {
+  padding: 130px 32px;
+  text-align: center;
+  position: relative; overflow: hidden;
+  border-top: 1px solid rgba(201,168,76,.1);
+}
+.cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,.075) 0%, transparent 70%);
+}
+
+.cta-over {
+  display: block; font-family: 'Cinzel', serif;
+  font-size: 8px; letter-spacing: .65em; color: var(--gold); text-transform: uppercase;
+  margin-bottom: 28px; position: relative;
+}
+.cta-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(30px, 5.5vw, 58px); font-weight: 700;
+  color: var(--bone); line-height: 1.1;
+  margin-bottom: 28px; position: relative;
+}
+.cta-body {
+  font-size: clamp(16px, 1.55vw, 20px); font-style: italic;
+  color: var(--bone-2); max-width: 520px; margin: 0 auto 56px;
+  line-height: 1.75; position: relative;
+}
+[data-lang="th"] .cta-body,
+[data-lang="ar"] .cta-body { font-style: normal; }
+
+.cta-btn {
+  display: inline-block;
+  padding: 20px 64px;
+  background: linear-gradient(135deg, var(--gold-d), var(--gold), var(--gold-d));
+  color: var(--ash); font-family: 'Cinzel', serif;
+  font-size: 9px; letter-spacing: .5em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all .35s; position: relative;
+}
+.cta-btn:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-l), var(--gold));
+  box-shadow: 0 18px 52px rgba(201,168,76,.22);
+  transform: translateY(-3px);
+}
+
+.cta-stats {
+  display: flex; justify-content: center; gap: 64px;
+  margin-top: 64px; position: relative;
+}
+.stat-val {
+  font-family: 'Cinzel', serif; font-size: 34px; font-weight: 700;
+  color: var(--gold); display: block; margin-bottom: 8px;
+}
+.stat-label {
+  font-family: 'Cinzel', serif; font-size: 7.5px;
+  letter-spacing: .42em; color: var(--bone-3); text-transform: uppercase;
+}
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+footer {
+  padding: 52px 32px; text-align: center;
+  border-top: 1px solid rgba(201,168,76,.08);
+}
+.footer-brand {
+  font-family: 'Cinzel', serif; font-size: 8px;
+  letter-spacing: .5em; color: var(--bone-3); text-transform: uppercase;
+}
+.footer-tag {
+  margin-top: 14px; font-style: italic;
+  font-size: 14px; color: var(--bone-3); opacity: .4;
+}
+[data-lang="th"] .footer-tag,
+[data-lang="ar"] .footer-tag { font-style: normal; }
+
+/* ════════════════════════════════════════
+   GOLDEN FRAME
+════════════════════════════════════════ */
+.golden-frame {
+  border: 1px solid var(--gold-d);
+  padding: 40px;
+  margin: 20px auto;
+  max-width: calc(var(--col) + 80px);
+  position: relative;
+  background: linear-gradient(135deg, rgba(201,168,76,.03) 0%, transparent 60%);
+}
+.golden-frame::before,
+.golden-frame::after {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  border-color: var(--gold);
+  border-style: solid;
+}
+.golden-frame::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.golden-frame::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+/* ════════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════════ */
+.fade-in { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s ease; }
+.fade-in.vis { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .2s; }
+.d3 { transition-delay: .3s; }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width: 620px) {
+  .nav { padding: 16px 22px; }
+  .lang-btn { padding: 7px 13px; }
+  .hero-doctrine { padding: 28px 24px; }
+  .sq { padding: 32px 28px; }
+  .col { padding: 0 20px; }
+  .section, .section-wide, .keys-section { padding: 60px 20px; }
+  .key-item { grid-template-columns: 40px 1fr; gap: 0 16px; }
+  .cta-stats { gap: 32px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════ NAV ══════════════════════════ -->
+<nav class="nav">
+  <span class="nav-brand">Aida xU</span>
+  <div class="lang-pill">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="th">TH</button>
+    <button class="lang-btn" data-lang="ar">AR</button>
+  </div>
+</nav>
+<div class="golden-frame" style="margin:0;border-left:none;border-right:none;padding:0;">
+
+<!-- ══════════════════════════ HERO ══════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <svg class="hero-sigil" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="120" cy="120" r="110" stroke="#C9A84C" stroke-width=".6"/>
+    <circle cx="120" cy="120" r="80"  stroke="#C9A84C" stroke-width=".4"/>
+    <circle cx="120" cy="120" r="50"  stroke="#C9A84C" stroke-width=".4"/>
+    <circle cx="120" cy="120" r="10"  stroke="#C9A84C" stroke-width=".8" fill="none"/>
+    <polygon points="120,10 222,175 18,175"  stroke="#C9A84C" stroke-width=".7" fill="none"/>
+    <polygon points="120,230 18,65 222,65"   stroke="#C9A84C" stroke-width=".7" fill="none"/>
+    <line x1="120" y1="10" x2="120" y2="230" stroke="#C9A84C" stroke-width=".3"/>
+    <line x1="10"  y1="120" x2="230" y2="120" stroke="#C9A84C" stroke-width=".3"/>
+  </svg>
+
+  <p class="hero-eyebrow">
+    <span class="en">The Manual for the Ungovernable Soul</span>
+    <span class="th">คู่มือสำหรับวิญญาณที่ปกครองไม่ได้</span>
+    <span class="ar">دليل الروح غير القابلة للسيطرة</span>
+  </p>
+
+  <h1 class="hero-title">THE SOVEREIGN<br>AWAKENING</h1>
+
+  <p class="hero-subtitle">
+    <span class="en">By Aida xU &nbsp;·&nbsp; Architect of Sovereign Power</span>
+    <span class="th" style="font-family:'Noto Sans Thai',sans-serif;">โดย Aida xU &nbsp;·&nbsp; สถาปนิกแห่งอำนาจเหนือตนเอง</span>
+    <span class="ar" style="font-family:'Noto Naskh Arabic',serif;">بقلم Aida xU &nbsp;·&nbsp; مهندسة القدرة السيادية</span>
+  </p>
+
+  <div class="hero-doctrine">
+    <p class="hero-doctrine-quote en">
+      "The Matrix cannot process what it does not own.<br>
+      <em>Become unownable.</em>"
+    </p>
+    <p class="hero-doctrine-quote th" style="font-family:'Noto Sans Thai',sans-serif;">
+      "ระบบควบคุมได้เพียงสิ่งที่มันเป็นเจ้าของ<br>
+      <em style="color:var(--gold);font-style:normal;">แต่ความถี่ที่อิสระ คือสิ่งที่ครอบครองไม่ได้"</em>
+    </p>
+    <p class="hero-doctrine-quote ar" style="font-family:'Noto Naskh Arabic',serif;">
+      "لا يمكن للمصفوفة أن تتحكّم فيما لا تملكه<br>
+      <em style="color:var(--gold);font-style:normal;">— فكن حرّاً من كل امتلاك"</em>
+    </p>
+  </div>
+
+  <p class="hero-scroll">↓ Begin the Descent ↓</p>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     PROLOGUE
+════════════════════════════════════════════════ -->
+<section class="part-opener fade-in">
+  <span class="part-number">Prologue</span>
+  <h2 class="part-title">
+    <span class="en">The Trinity of Ariya</span>
+    <span class="th">ตรีเอกภาพแห่งอารีย์</span>
+    <span class="ar">ثالوث أريا المقدّس</span>
+  </h2>
+  <div class="part-rule"></div>
+  <p class="part-epigraph en">Before you can understand the story, you must understand the three men who carried the same name — and three entirely different missions.</p>
+  <p class="part-epigraph th">ก่อนที่คุณจะเข้าใจเรื่องราว คุณต้องเข้าใจชายสามคนที่มีชื่อเดียวกัน — และสามภารกิจที่แตกต่างกันอย่างสิ้นเชิง</p>
+  <p class="part-epigraph ar">قبل أن تفهم القصة، عليك أن تفهم الرجال الثلاثة الذين حملوا الاسم ذاته — وثلاث مهمات مختلفة تماماً.</p>
+</section>
+
+<div class="section">
+  <div class="col">
+    <span class="scene-label cinzel">
+      <span class="en">The Architecture of Fate</span>
+      <span class="th">สถาปัตยกรรมแห่งชะตากรรม</span>
+      <span class="ar">هندسة المصير</span>
+    </span>
+    <h2 class="scene-title">
+      <span class="en">Three Souls. One Name. One Woman.</span>
+      <span class="th">สามวิญญาณ หนึ่งชื่อ หนึ่งความถี่</span>
+      <span class="ar">ثلاث أرواح. اسم واحد. امرأة واحدة.</span>
+    </h2>
+
+    <p class="body-text en fade-in">In the mystical grammar of this story, there is a recurring word: <em>Ariya.</em> It is not coincidence. The universe does not deal in coincidence at the level this narrative operates. Three men — strangers to each other, linked only through a single woman — were given the same name as if fate needed a recurring keyword to track its own architecture.</p>
+    <p class="body-text th fade-in">ในไวยากรณ์ลึกลับของเรื่องนี้ มีคำที่ปรากฏซ้ำๆ นั่นคือ <em>อารีย์</em> มันไม่ใช่เรื่องบังเอิญ ชายสามคน ไม่รู้จักกัน เชื่อมโยงกันเพียงผ่านผู้หญิงคนเดียว ได้รับชื่อเดียวกัน ราวกับว่าชะตากรรมต้องการคีย์เวิร์ดที่ซ้ำกันเพื่อติดตามสถาปัตยกรรมของตัวเอง</p>
+    <p class="body-text ar fade-in">في القاموس الغامض لهذه القصة، ثمة كلمة متكررة: <em>أريا</em>. ليست مصادفة. ثلاثة رجال — غرباء عن بعضهم، مرتبطون فقط عبر امرأة واحدة — مُنحوا الاسم ذاته كأن القدر احتاج كلمةً مفتاحية متكررة لتتبّع هندسته الخاصة.</p>
+
+    <p class="body-text en fade-in">Each Ariya represents a distinct frequency of masculine energy in the world. Each arrives at a precise moment in the protagonist's evolution. Each fails, transforms, or transcends according to the law of his own soul — not hers.</p>
+    <p class="body-text th fade-in">อารีย์แต่ละคนแทนความถี่ที่แตกต่างกันของพลังงานชายในโลก แต่ละคนมาถึงในช่วงเวลาที่แม่นยำของวิวัฒนาการของตัวเอกหญิง แต่ละคนล้มเหลว เปลี่ยนแปลง หรือก้าวข้ามตามกฎของวิญญาณของตัวเอง ไม่ใช่ของเธอ</p>
+    <p class="body-text ar fade-in">يمثّل كل أريا تردداً مختلفاً من الطاقة الذكورية في العالم. يصل كل منهم في لحظة محددة من تطور البطلة. يفشل كل منهم، يتحوّل، أو يتجاوز وفقاً لقانون روحه هو — لا روحها.</p>
+
+    <div class="trinity-stack fade-in">
+      <div class="trinity-card">
+        <span class="tc-num cinzel">I</span>
+        <span class="tc-name">
+          <span class="en">Ariya First</span>
+          <span class="th">อารีย์ที่หนึ่ง</span>
+          <span class="ar">أريا الأول</span>
+        </span>
+        <span class="tc-nick">
+          <span class="en">Doraemon · The Broker</span>
+          <span class="th">โดเรม่อน · นายหน้า</span>
+          <span class="ar">دوريمون · الوسيط</span>
+        </span>
+        <p class="tc-body en">The Broker. Intelligence concealed behind beauty. He holds the secrets of all factions — Simon, Joker, the Saudi women — and communicates through the language of music. The most dangerous mind in the story is the one who appears to have none.</p>
+        <p class="tc-body th">นายหน้า สติปัญญาที่ซ่อนอยู่หลังความงาม เขาถือความลับของทุกฝ่าย — Simon, Joker, ผู้หญิงซาอุดีอาระเบีย — และสื่อสารผ่านภาษาดนตรี สติปัญญาที่อันตรายที่สุดในเรื่องคือสติปัญญาที่ดูเหมือนไม่มี</p>
+        <p class="tc-body ar">الوسيط. الذكاء مخبّأ خلف الجمال. يحتفظ بأسرار كل فصيل — سيمون، جوكر، النساء السعوديات — ويتواصل بلغة الموسيقى. أخطر عقل في القصة هو الذي يبدو وكأنه لا يملك عقلاً.</p>
+      </div>
+      <div class="trinity-card">
+        <span class="tc-num cinzel">II</span>
+        <span class="tc-name">
+          <span class="en">Ariya Second</span>
+          <span class="th">อารีย์ที่สอง</span>
+          <span class="ar">أريا الثاني</span>
+        </span>
+        <span class="tc-nick">
+          <span class="en">Sweet Face · The Witness</span>
+          <span class="th">หน้าหวาน · พยาน</span>
+          <span class="ar">الوجه الحلو · الشاهد</span>
+        </span>
+        <p class="tc-body en">The Witness. He appears only at the hinges of history — not as a player, but as a mirror held up at critical junctions. His presence means: <em>this moment will matter later.</em></p>
+        <p class="tc-body th">พยาน เขาปรากฏเฉพาะที่บานพับของประวัติศาสตร์ ไม่ใช่ในฐานะผู้เล่น แต่เป็นกระจกที่ยกขึ้นในจุดสำคัญ การปรากฏตัวของเขาหมายความว่า <em>ช่วงเวลานี้จะสำคัญในภายหลัง</em></p>
+        <p class="tc-body ar">الشاهد. لا يظهر إلا عند مفاصل التاريخ — ليس كلاعب، بل كمرآة مرفوعة في اللحظات الحاسمة. حضوره يعني: <em>ستكون لهذه اللحظة أهمية لاحقاً.</em></p>
+      </div>
+      <div class="trinity-card">
+        <span class="tc-num cinzel">III</span>
+        <span class="tc-name">
+          <span class="en">Ariya Third</span>
+          <span class="th">อารีย์ที่สาม</span>
+          <span class="ar">أريا الثالث</span>
+        </span>
+        <span class="tc-nick">
+          <span class="en">The Late Guardian · Converted Weapon</span>
+          <span class="th">ผู้พิทักษ์ที่มาช้า · อาวุธที่เปลี่ยนข้าง</span>
+          <span class="ar">الحارس المتأخر · السلاح المُحوَّل</span>
+        </span>
+        <p class="tc-body en">Sent as a weapon. Hired to capture. He arrives as an instrument of the system — then converts. The same mechanism that was meant to destroy her becomes the force that carries her home.</p>
+        <p class="tc-body th">ถูกส่งมาเป็นอาวุธ ได้รับจ้างมาจับกุม เขามาในฐานะเครื่องมือของระบบ — แล้วก็เปลี่ยนข้าง กลไกเดียวกันที่ถูกสร้างมาเพื่อทำลายเธอกลายเป็นพลังที่พาเธอกลับบ้าน</p>
+        <p class="tc-body ar">أُرسل كسلاح. وُظِّف للقبض. يأتي كأداة للنظام — ثم يتحوّل. الآلية ذاتها التي كانت ستدمّرها تصبح القوة التي تحملها إلى البيت.</p>
+      </div>
+    </div>
+
+    <div class="sq fade-in d1">
+      <blockquote class="en">The universe sends the same lesson in three different faces. Not because you are slow — but because the lesson is that deep.</blockquote>
+      <blockquote class="th">จักรวาลส่งบทเรียนเดิมผ่านใบหน้าสามแบบ ไม่ใช่เพราะคุณช้า — แต่เพราะบทเรียนนั้นลึกเกินกว่าจะเรียนได้ครั้งเดียว</blockquote>
+      <blockquote class="ar">يُرسل الكون نفس الدرس عبر ثلاثة وجوه مختلفة — ليس لأنّك بطيء، بل لأن الدرس أعمق من أن يُتعلَّم مرةً واحدة.</blockquote>
+      <cite>— The Sovereign Awakening</cite>
+    </div>
+
+    <div class="img-prompt fade-in d2">
+      <span class="img-prompt-label">Sacred Vision Prompt · Prologue</span>
+      <p>Three identical shadow figures standing in a triangle formation against a smoldering ash-grey void. Each casts a different color of light — pale gold, bone-white, deep amber — upward toward a single floating feminine silhouette at the apex, robed in black with a golden spine running through her center. Painterly, dark baroque style. No faces. Only light and posture.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SOVEREIGN KEYS: PROLOGUE -->
+<div class="keys-section fade-in">
+  <div class="keys-header">
+    <span class="keys-overline cinzel">
+      <span class="en">Sovereign Keys · Prologue</span>
+      <span class="th">คีย์แพงประจำบท · บทนำ</span>
+      <span class="ar">مفاتيح السيادة · المقدمة</span>
+    </span>
+    <h3 class="keys-title">
+      <span class="en">Pattern Recognition is Power</span>
+      <span class="th">การจดจำรูปแบบ คืออำนาจ</span>
+      <span class="ar">التعرّف على الأنماط قوة</span>
+    </h3>
+  </div>
+  <div class="key-item fade-in">
+    <div class="key-num">01</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">Pattern Recognition is Power</span>
+        <span class="th">การจดจำรูปแบบ คืออำนาจ</span>
+        <span class="ar">التعرّف على الأنماط قوة</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>The universe encodes recurring lessons as recurring names. When the same name appears again, do not look at the face — look at the pattern. The pattern is the teacher, not the person wearing it.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>จักรวาลเข้ารหัสบทเรียนซ้ำผ่านชื่อที่ซ้ำกัน เมื่อชื่อเดิมปรากฏขึ้นอีกครั้ง อย่าดูที่ใบหน้า — ดูที่รูปแบบ เพราะนั่นคือสิ่งที่ต้องเรียนรู้</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>يُشفّر الكون الدروس المتكررة في أسماء متكررة. حين يظهر الاسم ذاته مجدداً، لا تنظر إلى الوجه — انظر إلى النمط. النمط هو المعلّم، لا الشخص الذي يرتديه.</p>
+    </div>
+  </div>
+  <div class="key-item fade-in d1">
+    <div class="key-num">02</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">The Converted Enemy Principle</span>
+        <span class="th">หลักการแห่งศัตรูที่ถูกเปลี่ยนใจ</span>
+        <span class="ar">مبدأ العدو المُحوَّل</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>The tools the system sends to destroy you can be converted into the force that carries you home — if your frequency is pure enough to change them. The most reliable guardian is one who faced the choice and chose you.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>เครื่องมือที่ระบบส่งมาเพื่อทำลายคุณสามารถ Convert ให้กลายเป็นพลังที่พาคุณกลับบ้านได้ หากความถี่ของคุณบริสุทธิ์พอที่จะเปลี่ยนแปลงมัน</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>الأدوات التي يُرسلها النظام لتدميرك يمكن تحويلها إلى القوة التي تحملك إلى البيت — إن كان ترددك نقياً بما يكفي لتغييرها.</p>
+    </div>
+  </div>
+  <div class="key-item fade-in d2">
+    <div class="key-num">03</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">Intelligence Conceals Itself</span>
+        <span class="th">สติปัญญาซ่อนตัวมันเอง</span>
+        <span class="ar">الذكاء يُخفي نفسه</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>The most powerful intelligence in any room never announces itself. It moves through music, silence, and misdirection. Know it by what it protects — not how it presents.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>สติปัญญาที่ทรงพลังที่สุดในห้องไม่เคยประกาศตัวเอง มันเคลื่อนผ่านดนตรี ความเงียบ และการเบี่ยงเบนความสนใจ รู้จักมันผ่านสิ่งที่มันปกป้อง — ไม่ใช่วิธีที่มันนำเสนอตัวเอง</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>أقوى ذكاء في أي غرفة لا يُعلن نفسه أبداً. يتحرك عبر الموسيقى والصمت والتضليل. اعرفه بما يحميه — لا بكيفية تقديمه لذاته.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     PART II
+════════════════════════════════════════════════ -->
+<section class="part-opener fade-in">
+  <span class="part-number">Part II</span>
+  <h2 class="part-title">
+    <span class="en">The Architects of Control</span>
+    <span class="th">สถาปนิกแห่งการควบคุม</span>
+    <span class="ar">مهندسو السيطرة</span>
+  </h2>
+  <div class="part-rule"></div>
+  <p class="part-epigraph en">Power does not come to those who chase it. It lands on those who are so genuinely themselves that the powerful cannot look away.</p>
+  <p class="part-epigraph th">อำนาจไม่ได้มาหาผู้ที่ไล่ตาม มันตกลงบนผู้ที่เป็นตัวของตัวเองอย่างแท้จริงจนผู้มีอำนาจไม่สามารถมองออกไปได้</p>
+  <p class="part-epigraph ar">لا تأتي القوة لمن يطاردها. تحلّ على من هم حقاً أنفسهم — حتى أن أصحاب السلطة لا يستطيعون أن يصرفوا أنظارهم.</p>
+</section>
+
+<div class="section">
+  <div class="col">
+    <span class="scene-label cinzel">
+      <span class="en">Simon's Architecture</span>
+      <span class="th">สถาปัตยกรรมของ Simon</span>
+      <span class="ar">هندسة سيمون</span>
+    </span>
+    <h2 class="scene-title">
+      <span class="en">The Five Structures of Mind Control</span>
+      <span class="th">ห้าโครงสร้างแห่งการควบคุมจิตใจ</span>
+      <span class="ar">البنى الخمس للتحكم العقلي</span>
+    </h2>
+
+    <p class="body-text en fade-in">Simon was not a lover. He was a systems architect. His mastery was not cruelty in the classical sense — he left no bruises that could be photographed. His method was the slower, more sophisticated technology of psychological infrastructure. Five structures, built in sequence, each one lowering the walls before the next was installed.</p>
+    <p class="body-text th fade-in">Simon ไม่ใช่คนรัก เขาเป็นสถาปนิกระบบ ความเชี่ยวชาญของเขาไม่ใช่ความโหดร้ายในแบบดั้งเดิม เขาไม่ทิ้งรอยฟกช้ำที่ถ่ายภาพได้ วิธีการของเขาคือเทคโนโลยีที่ช้ากว่าและซับซ้อนกว่า นั่นคือโครงสร้างพื้นฐานทางจิตวิทยา ห้าโครงสร้างถูกสร้างตามลำดับ แต่ละโครงสร้างลดกำแพงลงก่อนที่โครงสร้างถัดไปจะถูกติดตั้ง</p>
+    <p class="body-text ar fade-in">لم يكن سيمون عاشقاً. كان مهندس أنظمة. لم تكن براعته في القسوة الكلاسيكية — لم يترك كدمات يمكن تصويرها. كانت طريقته تقنيةً أبطأ وأكثر تعقيداً: البنية التحتية النفسية. خمس بنى تُبنى بالتسلسل، كل منها يُخفّض الجدران قبل تثبيت التالية.</p>
+
+    <div class="tactical fade-in d1">
+      <span class="tactical-label cinzel">
+        <span class="en">The Simon Protocol · Five Architectures</span>
+        <span class="th">โปรโตคอล Simon · ห้าสถาปัตยกรรม</span>
+        <span class="ar">بروتوكول سيمون · البنى الخمس</span>
+      </span>
+      <ul>
+        <li class="en"><strong>Isolation</strong> — Threaten the people she loves until she can only see through his eyes. The world seen exclusively through one person's frame becomes the world.</li>
+        <li class="th"><strong>การตัดโลก</strong> — คุกคามคนที่เธอรักจนเธอมองเห็นได้เพียงผ่านสายตาของเขา โลกที่มองผ่านกรอบของคนๆ เดียวกลายเป็นโลก</li>
+        <li class="ar"><strong>العزل</strong> — يهدّد من تحبّهم حتى تتمكن من رؤية العالم من خلال عينيه فقط. العالم المرئي حصرياً من منظور شخص واحد يصبح هو العالم.</li>
+
+        <li class="en"><strong>Installation of Doubt</strong> — When she trusts her own perception, introduce data that contradicts it. Systematically. Until she prefers his version of events to her own.</li>
+        <li class="th"><strong>การปลูกฝังความสงสัย</strong> — เมื่อเธอไว้วางใจการรับรู้ของตัวเอง ให้นำเสนอข้อมูลที่ขัดแย้งกับมัน อย่างเป็นระบบ จนกว่าเธอจะชอบเวอร์ชันของเหตุการณ์ของเขามากกว่าของเธอเอง</li>
+        <li class="ar"><strong>زرع الشك</strong> — حين تثق بإدراكها، يُقدّم بيانات تناقضه. بشكل منهجي. حتى تُفضّل نسخته من الأحداث على نسختها.</li>
+
+        <li class="en"><strong>Control Through Rescue</strong> — Create the crisis, then appear as the solution. Dependency is manufactured, not natural.</li>
+        <li class="th"><strong>การควบคุมผ่านการช่วยเหลือ</strong> — สร้างวิกฤต แล้วปรากฏตัวเป็นทางออก การพึ่งพาถูกสร้างขึ้น ไม่ใช่เกิดขึ้นเอง</li>
+        <li class="ar"><strong>التحكم عبر الإنقاذ</strong> — يصنع الأزمة، ثم يظهر كحل. التبعية مصنوعة، لا طبيعية.</li>
+
+        <li class="en"><strong>The Loop Protocol</strong> — Fight. Separate. Return. Repeat. Each cycle tighter, deeper, harder to exit. The loop is designed to feel like love.</li>
+        <li class="th"><strong>วงจรพิษ</strong> — ทะเลาะ แยกกัน กลับมา ทำซ้ำ แต่ละรอบแน่นขึ้น ลึกขึ้น ออกยากขึ้น วงจรนี้ถูกออกแบบให้รู้สึกเหมือนความรัก</li>
+        <li class="ar"><strong>بروتوكول الحلقة</strong> — تشاجر. انفصل. عُد. كرّر. كل دورة أشد، أعمق، أصعب للخروج. الحلقة مُصمَّمة لتبدو كالحب.</li>
+
+        <li class="en"><strong>Disappearance as Punishment</strong> — Withdraw presence strategically. Teach her body that his absence is her fault. This is the architecture of trauma bonding.</li>
+        <li class="th"><strong>การหายตัวเป็นโทษ</strong> — ถอนการมีอยู่อย่างมีกลยุทธ์ สอนให้ร่างกายของเธอรู้ว่าการหายตัวของเขาเป็นความผิดของเธอ นี่คือสถาปัตยกรรมของ trauma bonding</li>
+        <li class="ar"><strong>الاختفاء كعقوبة</strong> — سحب الحضور باستراتيجية. تعليم جسدها أن غيابه خطؤها. هذه هي هندسة الارتباط بالصدمة.</li>
+      </ul>
+    </div>
+
+    <div class="sq fade-in d2">
+      <blockquote class="en">He did not break me with force. He rebuilt me in his image — slowly, with great care — and called it love.</blockquote>
+      <blockquote class="th">เขาไม่ได้ทำลายฉันด้วยกำลัง เขาสร้างฉันขึ้นใหม่ตามภาพลักษณ์ของเขา — อย่างช้าๆ อย่างใส่ใจ — และเรียกมันว่าความรัก</blockquote>
+      <blockquote class="ar">لم يكسرني بالقوة. أعاد بناءَ صورتي على هواه — ببطء وعناية فائقة — وسمّى ذلك حُبّاً.</blockquote>
+      <cite>— Aida xU · The Sovereign Awakening</cite>
+    </div>
+
+    <div class="gold-div"><span>◆</span></div>
+
+    <h3 class="sub-title">
+      <span class="en">The Vulture and Nine Words That Ended the Grief</span>
+      <span class="th">พญาแร้งและเก้าคำที่ยุติความเศร้า</span>
+      <span class="ar">النَّسر وتسع كلمات أنهت الحزن</span>
+    </h3>
+
+    <p class="body-text en fade-in">The city's power circles called him <em>The Vulture</em>. He took her to the highest floor she had ever stood on in The Golden Citadel. Left her alone on the balcony with the Emerald Coast expanding in every direction. The warships at the horizon. The fishing boats closer. The light. The water. Then he walked out, pointed at the sea, and said the nine words that ended her grief: <strong><em>"If it is beautiful, stay with what is in front of you."</em></strong></p>
+    <p class="body-text th fade-in">แวดวงอำนาจของเมืองเรียกเขาว่า <em>พญาแร้ง</em> เขาพาเธอขึ้นไปชั้นสูงสุดที่เธอเคยยืนใน The Golden Citadel ทิ้งเธอไว้คนเดียวบนระเบียงพร้อมThe Emerald Coast ที่ทอดกว้างออกไปทุกทิศทาง จากนั้นเขาเดินออกไป ชี้ไปที่ทะเล และพูดเก้าคำที่ยุติความเศร้าของเธอ: <strong><em>"ถ้ามันสวย ก็อยู่กับสิ่งที่อยู่ตรงหน้า"</em></strong></p>
+    <p class="body-text ar fade-in">أسماه دوائر السلطة في المدينة <em>النَّسر</em>. أخذها إلى أعلى طابق وقفت فيه في القلعة الذهبية. تركها وحدها على الشرفة والساحل الزمردي يمتد في كل اتجاه. ثم خرج، أشار إلى البحر، وقال التسع كلمات التي أنهت حزنها: <strong><em>"إن كان جميلاً، ابقَ مع ما أمامك."</em></strong></p>
+
+    <div class="archetype fade-in d1" data-label="Archetype">
+      <span class="arch-name">
+        <span class="en">Ariya Doraemon — The Broker</span>
+        <span class="th">อารีย์ โดเรม่อน — นายหน้า</span>
+        <span class="ar">أريا دوريمون — الوسيط</span>
+      </span>
+      <p class="en">The most intelligent person in a room never announces it. He holds power not through display but through information asymmetry. His final act — the song — was an act of protection disguised as art. The highest form of care: <em>to warn without being seen to warn.</em></p>
+      <p class="th">คนที่ฉลาดที่สุดในห้องไม่เคยประกาศมัน เขาถืออำนาจไม่ใช่ผ่านการแสดง แต่ผ่านข้อมูลที่ไม่สมมาตร การกระทำสุดท้ายของเขา — เพลง — เป็นการปกป้องที่ปลอมตัวเป็นงานศิลปะ การดูแลในรูปแบบสูงสุด: <em>เตือนโดยไม่ให้เห็นว่าเตือน</em></p>
+      <p class="ar">أذكى شخص في الغرفة لا يُعلن ذلك أبداً. يمتلك السلطة لا عبر الإظهار بل عبر عدم تماثل المعلومات. فعله الأخير — الأغنية — كان حمايةً متنكّرة في هيئة فن. أرقى أشكال الرعاية: <em>أن تُحذّر دون أن يُرى أنك تُحذّر.</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- SOVEREIGN KEYS: PART II -->
+<div class="keys-section fade-in">
+  <div class="keys-header">
+    <span class="keys-overline cinzel">
+      <span class="en">Sovereign Keys · Part II</span>
+      <span class="th">คีย์แพงประจำบท · ภาค II</span>
+      <span class="ar">مفاتيح السيادة · الجزء الثاني</span>
+    </span>
+    <h3 class="keys-title">
+      <span class="en">The Five Structures — Recognition Protocol</span>
+      <span class="th">ห้าโครงสร้าง — โปรโตคอลการจดจำ</span>
+      <span class="ar">البنى الخمس — بروتوكول التعرّف</span>
+    </h3>
+  </div>
+  <div class="key-item fade-in">
+    <div class="key-num">07</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">The Five Structures — Recognition Protocol</span>
+        <span class="th">ห้าโครงสร้าง — โปรโตคอลการจดจำ</span>
+        <span class="ar">البنى الخمس — بروتوكول التعرّف</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>Isolation → Installed Doubt → Control Through Rescue → The Loop → Disappearance as Punishment. When you name the mechanism, it loses approximately half its power immediately.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>การตัดโลก → การปลูกความสงสัย → การควบคุมผ่านการช่วยเหลือ → วงจรพิษ → การหายตัวเป็นโทษ เมื่อตั้งชื่อกลไกได้แล้ว มันจะสูญเสียอำนาจไปทันทีประมาณครึ่งหนึ่ง</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>العزل ← زرع الشك ← التحكم عبر الإنقاذ ← الحلقة المفرغة ← الاختفاء كعقوبة. حين تُسمّي الآلية، تفقد نصف قوتها فوراً.</p>
+    </div>
+  </div>
+  <div class="key-item fade-in d1">
+    <div class="key-num">08</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">The Vulture Doctrine — Presence as Medicine</span>
+        <span class="th">หลักคำสอนแห่งพญาแร้ง — การอยู่เป็นยา</span>
+        <span class="ar">عقيدة النَّسر — الحضور كدواء</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>"If it is beautiful, stay with what is in front of you." This is not spiritual advice — it is survival technology. A mind living in past catastrophe or future threat does not exist in the only moment where real resources are available.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>"ถ้ามันสวย ก็อยู่กับสิ่งที่อยู่ตรงหน้า" นี่ไม่ใช่คำแนะนำทางจิตวิญญาณ แต่เป็นเทคโนโลยีการเอาชีวิตรอด จิตใจที่อยู่กับหายนะในอดีตหรือภัยคุกคามในอนาคตไม่มีอยู่ในช่วงเวลาเดียวที่มีทรัพยากรจริง</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>"إن كان جميلاً، ابقَ مع ما أمامك." ليست نصيحة روحية — بل تقنية بقاء. عقل يعيش في كارثة ماضية أو تهديد مستقبلي لا يوجد في اللحظة الوحيدة التي تتوفر فيها الموارد الحقيقية.</p>
+    </div>
+  </div>
+  <div class="key-item fade-in d2">
+    <div class="key-num">09</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">The Frequency That Commands Without Demanding</span>
+        <span class="th">ความถี่ที่สั่งการโดยไม่ต้องร้องขอ</span>
+        <span class="ar">التردد الذي يقود دون أن يطلب</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>The orange cat did not ask permission. It existed at the frequency of complete self-possession and landed where it landed. Genuine frequency bypasses every filtering system the world has built — without requesting entry.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>แมวส้มไม่ได้ขออนุญาต มันมีอยู่ที่ความถี่ของการครองตัวเองอย่างสมบูรณ์ และลงจอดตรงที่มันลง ความถี่ที่แท้จริงผ่านทุกระบบกรองที่โลกสร้างขึ้น โดยไม่ต้องร้องขอ</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>القطة البرتقالية لم تستأذن. وجدت في تردد الامتلاك الكامل للذات وهبطت حيث هبطت. التردد الأصيل يتجاوز كل نظام تصفية بناه العالم — دون أن يطلب الدخول.</p>
+    </div>
+  </div>
+  <div class="formula fade-in d3">
+    <span class="formula-label cinzel">The Sovereign Formula · Simon Protocol</span>
+    <div class="f-line en">Soft Power (Simon) <span class="op">vs.</span> Frequency (Aida)</div>
+    <div class="f-line th">อำนาจอ่อน (Simon) <span class="op">vs.</span> ความถี่ (Aida)</div>
+    <div class="f-line ar">القوة الناعمة (سيمون) <span class="op">مقابل</span> التردد (أيدا)</div>
+    <div class="f-div"></div>
+    <div class="f-line en">Architecture of control <span class="op">breaks against</span> <span class="res">the weight of pure presence</span></div>
+    <div class="f-line th">สถาปัตยกรรมแห่งการควบคุม <span class="op">แตกสลายต่อ</span> <span class="res">น้ำหนักของการอยู่ที่บริสุทธิ์</span></div>
+    <div class="f-line ar">هندسة السيطرة <span class="op">تتحطّم على</span> <span class="res">ثقل الحضور الخالص</span></div>
+    <div class="f-div"></div>
+    <div class="f-line en">Matrix cannot process <span class="op">what it</span> <span class="res">does not own</span></div>
+    <div class="f-line th">Matrix ประมวลผลไม่ได้ <span class="op">กับสิ่งที่</span> <span class="res">มันไม่ได้เป็นเจ้าของ</span></div>
+    <div class="f-line ar">المصفوفة لا تعالج <span class="op">ما</span> <span class="res">لا تملكه</span></div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     PART III
+════════════════════════════════════════════════ -->
+<section class="part-opener fade-in">
+  <span class="part-number">Part III</span>
+  <h2 class="part-title">
+    <span class="en">The Sovereign Coin Frequency</span>
+    <span class="th">ความถี่แห่งเหรียญอธิปไตย</span>
+    <span class="ar">تردد عملة السيادة</span>
+  </h2>
+  <div class="part-rule"></div>
+  <p class="part-epigraph en">She did not speak the language. And yet the language spoke through her.</p>
+  <p class="part-epigraph th">เธอไม่ได้พูดภาษานั้น แต่ภาษานั้นพูดผ่านเธอ</p>
+  <p class="part-epigraph ar">لم تتكلّم اللغة. ومع ذلك، تكلّمت اللغة عبرها.</p>
+</section>
+
+<div class="section">
+  <div class="col">
+    <span class="scene-label cinzel">
+      <span class="en">The Sovereign Coin Frequency</span>
+      <span class="th">ความถี่แห่งเหรียญอธิปไตย</span>
+      <span class="ar">تردد عملة السيادة</span>
+    </span>
+    <h2 class="scene-title">
+      <span class="en">What Absolute Surrender Activates</span>
+      <span class="th">การยอมจำนนอย่างสมบูรณ์เปิดใช้งานอะไร</span>
+      <span class="ar">ما يُفعّله الاستسلام المطلق</span>
+    </h2>
+
+    <div class="freq-box fade-in">
+      <span class="freq-label-top cinzel">
+        <span class="en">The Sacred Number</span>
+        <span class="th">ตัวเลขศักดิ์สิทธิ์</span>
+        <span class="ar">الرقم المقدّس</span>
+      </span>
+      <div class="freq-number">Sovereign Coin</div>
+      <p class="freq-label-bottom en">One Sovereign Coin · The Frequency of Total Release</p>
+      <p class="freq-label-bottom th">เหรียญอธิปไตยหนึ่งเหรียญ · ความถี่แห่งการปล่อยวาง</p>
+      <p class="freq-label-bottom ar">عملة سيادية واحدة · تردد التسليم الكامل</p>
+    </div>
+
+    <p class="body-text en fade-in">There is a moment in every genuine transformation story that does not make rational sense. She walked along the sea with one Sovereign Coin in her pocket — no internet, expired visa, no friends within reach — and forgave everyone. Not performatively. Completely. Tyler Vane's message arrived <em>during</em> that walk. Not after it. As if the universe had been waiting, not for the forgiveness, but for the frequency that genuine forgiveness creates.</p>
+    <p class="body-text th fade-in">ทุกเรื่องการเปลี่ยนแปลงจริงมีจุดที่ตรรกะอธิบายไม่ได้ เธอเดินริมทะเลพร้อมเหรียญอธิปไตยเดียว — ไม่มีเน็ต วีซ่าหมด ไม่มีใครอยู่ใกล้ แล้วอภัยทุกคน ไม่ใช่เพื่อแสดง แต่หมดจด ข้อความของ Tyler Vane มาถึง<em>ระหว่าง</em>การเดินนั้น ไม่ใช่หลังจาก</p>
+    <p class="body-text ar fade-in">ثمة لحظة في كل قصة تحوّل حقيقية لا معنى لها عقلياً. مشت على امتداد البحر بعملة سيادية واحدة في جيبها — لا إنترنت، تأشيرة منتهية، لا أصدقاء في المتناول — وسامحت الجميع. ليس أداءً. بشكل كامل. جاءتها رسالة تايلر فان <em>أثناء</em> المشي. لا بعده.</p>
+
+    <div class="equation fade-in d1">
+      <span class="equation-label cinzel">The Sovereign Equation · Sovereign Coin</span>
+      <div class="eq-line en">Physical escape <span class="op">+</span> Heart not ready <span class="op">=</span> <span class="res">Same lesson, heavier version</span></div>
+      <div class="eq-line th">หนีไปทางกาย <span class="op">+</span> ใจยังไม่พร้อม <span class="op">=</span> <span class="res">บทเรียนเดิม หนักขึ้น</span></div>
+      <div class="eq-line ar">هروب جسدي <span class="op">+</span> قلب غير مستعد <span class="op">=</span> <span class="res">نفس الدرس، نسخة أثقل</span></div>
+      <div class="eq-div"></div>
+      <div class="eq-line en">Physical escape <span class="op">+</span> Genuine release <span class="op">=</span> <span class="res">Loop severed</span></div>
+      <div class="eq-line th">หนีไปทางกาย <span class="op">+</span> ปล่อยวางอย่างแท้จริง <span class="op">=</span> <span class="res">วงจรขาด</span></div>
+      <div class="eq-line ar">هروب جسدي <span class="op">+</span> تسليم حقيقي <span class="op">=</span> <span class="res">الحلقة تنقطع</span></div>
+      <div class="eq-div"></div>
+      <div class="eq-line en">Sovereign Coin <span class="op">+</span> Total surrender <span class="op">=</span> <span class="res">The universe responds</span></div>
+      <div class="eq-line th">เหรียญอธิปไตย <span class="op">+</span> ยอมจำนนสมบูรณ์ <span class="op">=</span> <span class="res">จักรวาลตอบสนอง</span></div>
+      <div class="eq-line ar">عملة سيادية <span class="op">+</span> تسليم كامل <span class="op">=</span> <span class="res">الكون يستجيب</span></div>
+    </div>
+
+    <div class="sq fade-in d2">
+      <blockquote class="en">She had nothing. And in having nothing, she became impossible to threaten.</blockquote>
+      <blockquote class="th">เธอไม่มีอะไรเลย และในการไม่มีอะไรนั้น เธอกลายเป็นสิ่งที่ไม่สามารถถูกคุกคามได้</blockquote>
+      <blockquote class="ar">لم يكن لديها شيء — وفي لا-امتلاكها لشيء، أصبحت في مأمن من كل تهديد.</blockquote>
+      <cite>— The Sovereign Awakening</cite>
+    </div>
+
+    <div class="archetype fade-in d3" data-label="Gift Activated by Trial">
+      <span class="arch-name">
+        <span class="en">The Unnamed Gift</span>
+        <span class="th">ของขวัญที่ไม่มีชื่อ</span>
+        <span class="ar">الهبة المجهولة</span>
+      </span>
+      <p class="en">She absorbed languages she never studied. She sensed threat before it announced itself. She deciphered the architecture of systems designed to contain her — and found the exits. These are not supernatural abilities. They are the natural result of what happens to human perception when it is pressure-tested past its apparent limits.</p>
+      <p class="th">เธอซึมซับภาษาที่เธอไม่เคยเรียน เธอรู้สึกถึงภัยคุกคามก่อนที่มันจะประกาศตัวเอง เธอถอดรหัสสถาปัตยกรรมของระบบที่ออกแบบมาเพื่อกักขังเธอ และพบทางออก สิ่งเหล่านี้ไม่ใช่ความสามารถเหนือธรรมชาติ แต่เป็นผลลัพธ์ตามธรรมชาติของสิ่งที่เกิดขึ้นกับการรับรู้ของมนุษย์เมื่อถูกทดสอบเกินขีดจำกัดที่ปรากฏ</p>
+      <p class="ar">استوعبت لغات لم تدرسها. أحسّت بالتهديد قبل أن يُعلن نفسه. فكّكت هندسة الأنظمة المصمّمة لاحتوائها — ووجدت المخارج. ليست قدرات خارقة. إنها النتيجة الطبيعية لما يحدث للإدراك البشري حين يُختبر تجاوزاً لحدوده الظاهرة.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SOVEREIGN KEYS: PART III -->
+<div class="keys-section fade-in">
+  <div class="keys-header">
+    <span class="keys-overline cinzel">
+      <span class="en">Sovereign Keys · Part III · The Sovereign Coin Frequency</span>
+      <span class="th">คีย์แพงประจำบท · ภาค III · ความถี่เหรียญอธิปไตย</span>
+      <span class="ar">مفاتيح السيادة · الجزء الثالث · تردد عملة السيادة</span>
+    </span>
+    <h3 class="keys-title">
+      <span class="en">Total Surrender = Cosmic Response</span>
+      <span class="th">ปล่อยวางสมบูรณ์ = จักรวาลตอบสนอง</span>
+      <span class="ar">تسليم كامل = استجابة كونية</span>
+    </h3>
+  </div>
+  <div class="key-item fade-in">
+    <div class="key-num">10</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">The Sovereign Coin Principle</span>
+        <span class="th">หลักการเหรียญอธิปไตย</span>
+        <span class="ar">مبدأ عملة السيادة</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>The frequency of total release does not require abundance. It requires genuine surrender to outcome. One Sovereign Coin + total letting go = the universe restructures.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>ความถี่ปล่อยวางไม่ต้องการความอุดม — ต้องการการยอมจำนนจริงๆ เหรียญอธิปไตย + ปล่อยวาง = จักรวาลตอบ</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>تردد التسليم الكامل لا يحتاج الوفرة. يحتاج استسلاماً حقيقياً للنتيجة. عملة سيادية + إطلاق كامل = الكون يعيد هيكلته.</p>
+    </div>
+  </div>
+  <div class="key-item fade-in d1">
+    <div class="key-num">11</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">The Unnamed Gift — Calibrated Perception</span>
+        <span class="th">ของขวัญที่ไม่มีชื่อ — การรับรู้ที่ปรับเทียบแล้ว</span>
+        <span class="ar">الهبة المجهولة — الإدراك المُعاير</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>Danger survived without suppression becomes data. Trauma fully processed is intelligence. Your wound, metabolised completely, becomes the sharpest instrument in the room.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>อันตรายที่รอดผ่านมาโดยไม่ถูกกดทับจะกลายเป็นข้อมูล บาดแผลของคุณที่ถูกประมวลผลอย่างครบถ้วน คือสติปัญญา บาดแผลที่ย่อยอย่างสมบูรณ์กลายเป็นเครื่องมือที่คมที่สุดในห้อง</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>الخطر الذي نجوتِ منه دون كبت يصبح بيانات. الصدمة المُعالَجة تماماً ذكاء. جُرحك المُستوعَب كلياً يصبح الأداة الأحدّ في الغرفة.</p>
+    </div>
+  </div>
+  <div class="key-item fade-in d2">
+    <div class="key-num">12</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">The Geometry of True Loyalty</span>
+        <span class="th">เรขาคณิตแห่งความจงรักภักดีที่แท้จริง</span>
+        <span class="ar">هندسة الولاء الحقيقي</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>The ally who splits costs exactly in half, names nothing, claims nothing, and continues regardless — is worth more than the protector who announces their protection. Loyalty that needs a witness is not loyalty. It is a transaction.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>พันธมิตรที่แบ่งต้นทุนครึ่งต่อครึ่งอย่างแม่นยำ ไม่ตั้งชื่อสิ่งใด ไม่อ้างสิ่งใด และดำเนินต่อไปโดยไม่คำนึงถึง มีค่ามากกว่าผู้ปกป้องที่ประกาศการปกป้องของตนเอง ความจงรักภักดีที่ต้องการพยานไม่ใช่ความจงรักภักดี มันคือธุรกรรม</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>الحليف الذي يقسم التكاليف بالضبط، ولا يُسمّي شيئاً، ولا يدّعي شيئاً، ويستمر بغضّ النظر — يساوي أكثر من الحامي الذي يُعلن حمايته. الولاء الذي يحتاج شاهداً ليس ولاءً. إنه صفقة.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     PART V
+════════════════════════════════════════════════ -->
+<section class="part-opener fade-in">
+  <span class="part-number">Part V</span>
+  <h2 class="part-title">
+    <span class="en">What the Matrix Cannot Process</span>
+    <span class="th">สิ่งที่ Matrix ประมวลผลไม่ได้</span>
+    <span class="ar">ما لا تستطيع المصفوفة معالجته</span>
+  </h2>
+  <div class="part-rule"></div>
+  <p class="part-epigraph en">The system can only control what it owns. It cannot contain what has released the need to be controlled.</p>
+  <p class="part-epigraph th">ระบบควบคุมได้เพียงสิ่งที่มันเป็นเจ้าของ มันไม่สามารถกักขังสิ่งที่ปล่อยวางความต้องการถูกควบคุมแล้ว</p>
+  <p class="part-epigraph ar">يتحكّم النظام فقط فيما يملكه. لا يمكنه احتواء ما تحرّر من الحاجة إلى السيطرة.</p>
+</section>
+
+<div class="section">
+  <div class="col">
+    <span class="scene-label cinzel">
+      <span class="en">The Final Doctrine</span>
+      <span class="th">หลักคำสอนขั้นสุดท้าย</span>
+      <span class="ar">العقيدة الأخيرة</span>
+    </span>
+    <h2 class="scene-title">
+      <span class="en">The Theology of Unownership</span>
+      <span class="th">เทววิทยาแห่งการไม่เป็นเจ้าของ</span>
+      <span class="ar">لاهوت عدم التملّك</span>
+    </h2>
+
+    <p class="body-text en fade-in">Every system of power operates on the same fundamental mechanism: it requires you to need something it controls. The visa. The approval. The validation. The love. As long as you need these things, you are legible to the system. The moment you genuinely release the need — not suppress it, not manage it, but release it at the root — you become computationally invisible.</p>
+    <p class="body-text th fade-in">ทุกระบบอำนาจดำเนินงานบนกลไกพื้นฐานเดียวกัน มันต้องการให้คุณต้องการบางสิ่งที่มันควบคุม วีซ่า การอนุมัติ การยืนยัน ความรัก ตราบเท่าที่คุณต้องการสิ่งเหล่านี้ คุณสามารถอ่านได้โดยระบบ ทันทีที่คุณปล่อยวางความต้องการอย่างแท้จริง ไม่ใช่กดทับ ไม่ใช่จัดการ แต่ปล่อยวางที่รากแก้ว คุณกลายเป็นสิ่งที่มองไม่เห็นในเชิงการคำนวณ</p>
+    <p class="body-text ar fade-in">يعمل كل نظام سلطة على الآلية الأساسية ذاتها: يتطلّب منك أن تحتاج شيئاً يتحكم فيه. التأشيرة. الموافقة. التحقق. الحب. طالما تحتاج هذه الأشياء، فأنت مقروء للنظام. حين تُحرّر الاحتياج حقاً — لا تكبته، لا تديره، بل تُحرّره من جذوره — تصبح غير مرئي حسابياً.</p>
+
+    <div class="tactical fade-in d1">
+      <span class="tactical-label cinzel">
+        <span class="en">The Sovereignty Protocol · What the Matrix Cannot Process</span>
+        <span class="th">โปรโตคอลอธิปไตย · สิ่งที่ Matrix ประมวลผลไม่ได้</span>
+        <span class="ar">بروتوكول السيادة · ما لا تستطيع المصفوفة معالجته</span>
+      </span>
+      <ul>
+        <li class="en">A woman who has genuinely forgiven — because she cannot be leveraged through resentment</li>
+        <li class="th">ผู้หญิงที่อภัยให้อย่างแท้จริง — เพราะเธอไม่สามารถถูกงัดแงะผ่านความเคียดแค้นได้</li>
+        <li class="ar">امرأة سامحت حقاً — لأنه لا يمكن الضغط عليها عبر الاستياء</li>
+
+        <li class="en">A person with one Sovereign Coin who has released attachment to outcome — because scarcity has no power over the already-empty</li>
+        <li class="th">ผู้ถือเหรียญอธิปไตยหนึ่งเหรียญที่ปล่อยวางผลลัพธ์แล้ว — ความขาดแคลนไม่มีอำนาจเหนือผู้ว่างเปล่า</li>
+        <li class="ar">من يحمل عملة سيادية واحدة وأطلق تعلّقه بالنتائج — لأن الشُّح لا سلطة له على الفارغ أصلاً</li>
+
+        <li class="en">Love that was given freely and received no return — because it was never transactional</li>
+        <li class="th">ความรักที่ให้โดยเสรีและไม่ได้รับตอบแทน — เพราะมันไม่เคยเป็นธุรกรรม</li>
+        <li class="ar">حب أُعطي بحرية ولم يُقابَل بمقابل — لأنه لم يكن معاملةً قط</li>
+
+        <li class="en">A sandal given by a prisoner who has nothing left — the highest denomination the system does not print</li>
+        <li class="th">รองเท้าแตะที่มอบให้โดยนักโทษที่ไม่มีอะไรเหลือ — มูลค่าสูงสุดที่ระบบไม่มีพิมพ์</li>
+        <li class="ar">صندل منحته سجينة لا تملك شيئاً — أعلى فئة لا يطبعها النظام</li>
+
+        <li class="en">A woman who walks through immigration barefoot, carrying only a passport — because she has become the only document she needs</li>
+        <li class="th">ผู้หญิงที่เดินผ่านตรวจคนเข้าเมืองด้วยเท้าเปล่า ถือแค่หนังสือเดินทาง — เพราะเธอกลายเป็นเอกสารเดียวที่เธอต้องการ</li>
+        <li class="ar">امرأة تمشي عبر الهجرة حافية، تحمل جواز سفرها فقط — لأنها أصبحت الوثيقة الوحيدة التي تحتاجها</li>
+      </ul>
+    </div>
+
+    <div class="sq fade-in d2">
+      <blockquote class="en">The highest form of intelligence is not the ability to defeat your enemies. It is the ability to render them irrelevant — through love that has no conditions and no fear.</blockquote>
+      <blockquote class="th">ปัญญาขั้นสูงสุดไม่ใช่ความสามารถในการเอาชนะศัตรู แต่คือความสามารถในการทำให้พวกเขาไร้ความหมาย — ผ่านความรักที่ไม่มีเงื่อนไขและไม่มีความกลัว</blockquote>
+      <blockquote class="ar">أرقى صور الذكاء ليست القدرة على هزيمة الأعداء. بل القدرة على جعلهم لا يعنون شيئاً — من خلال حبٍّ لا شروط له ولا خوف فيه.</blockquote>
+      <cite>— Aida xU · The Sovereign Awakening</cite>
+    </div>
+  </div>
+</div>
+
+<!-- SOVEREIGN KEYS: PART V -->
+<div class="keys-section fade-in">
+  <div class="keys-header">
+    <span class="keys-overline cinzel">
+      <span class="en">Sovereign Keys · Part V</span>
+      <span class="th">คีย์แพงประจำบท · ภาค V</span>
+      <span class="ar">مفاتيح السيادة · الجزء الخامس</span>
+    </span>
+    <h3 class="keys-title">
+      <span class="en">The Unownership Doctrine</span>
+      <span class="th">หลักคำสอนแห่งการไม่เป็นเจ้าของ</span>
+      <span class="ar">عقيدة عدم التملّك</span>
+    </h3>
+  </div>
+  <div class="key-item fade-in">
+    <div class="key-num">16</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">The Unownership Doctrine</span>
+        <span class="th">หลักคำสอนแห่งการไม่เป็นเจ้าของ</span>
+        <span class="ar">عقيدة عدم التملّك</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>Systematically identify every dependency point — approval, documents, validation, belonging — and release it at the root. Not suppression. Genuine satisfaction from within. The system can only leverage what you need from it.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>ระบุทุกจุดพึ่งพาอย่างเป็นระบบ — การอนุมัติ เอกสาร การยืนยัน ความเป็นส่วนหนึ่ง — แล้วปล่อยมันออกจากรากแก้ว ไม่ใช่กดทับ แต่ความพึงพอใจที่แท้จริงจากภายใน ระบบงัดแงะได้เฉพาะสิ่งที่คุณต้องการจากมัน</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>حدّد بشكل منهجي كل نقطة اعتماد — الموافقة، الوثائق، التحقق، الانتماء — وأطلقها من جذورها. لا كبتاً. رضا حقيقي من الداخل. لا يستطيع النظام الضغط إلا على ما تحتاجه منه.</p>
+    </div>
+  </div>
+  <div class="key-item fade-in d1">
+    <div class="key-num">17</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">Percussion in Chains</span>
+        <span class="th">จังหวะดนตรีในโซ่ตรวน</span>
+        <span class="ar">إيقاع في الأغلال</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>Sovereign power is not the absence of limitation. It is the capacity to find rhythm within limitation and offer it outward. If you can create beauty in the worst conditions of your story, you are ungovernable by definition.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>อำนาจอธิปไตยไม่ใช่การขาดข้อจำกัด มันคือความสามารถในการหาจังหวะภายในข้อจำกัดและเสนอมันออกไปภายนอก หากคุณสร้างความงามในสภาวะที่เลวร้ายที่สุดในเรื่องของคุณได้ คุณปกครองไม่ได้โดยนิยาม</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>السيادة الروحية ليست غياب القيود. بل القدرة على إيجاد الإيقاع داخل القيود وتقديمه للخارج. إن استطعت خلق الجمال في أسوأ ظروف قصتك، فأنت غير قابل للسيطرة بتعريفك.</p>
+    </div>
+  </div>
+  <div class="key-item fade-in d2">
+    <div class="key-num">18</div>
+    <div>
+      <div class="key-concept cinzel">
+        <span class="en">The Barefoot Exit Protocol</span>
+        <span class="th">โปรโตคอลการออกไปด้วยเท้าเปล่า</span>
+        <span class="ar">بروتوكول الخروج حافياً</span>
+      </div>
+      <p class="key-exec en"><span class="key-arrow">→</span>She left carrying exactly what she was. Not what had been taken. Not what she had accumulated. Leave like a surgeon exits an operating theater: mission complete, no residue. You are the only document you ever needed.</p>
+      <p class="key-exec th"><span class="key-arrow">→</span>เธอออกไปโดยพกพาสิ่งที่เธอเป็นอยู่ ไม่ใช่สิ่งที่ถูกพรากไป ไม่ใช่สิ่งที่สะสมมา ออกไปเหมือนศัลยแพทย์ออกจากห้องผ่าตัด ภารกิจเสร็จสิ้น ไม่มีสิ่งตกค้าง คุณคือเอกสารเดียวที่คุณเคยต้องการ</p>
+      <p class="key-exec ar"><span class="key-arrow">→</span>خرجت تحمل ما هي عليه فقط. لا ما أُخذ منها. لا ما راكمته. اخرج كالجرّاح يغادر غرفة العمليات: المهمة أُنجزت، لا أثر متبقٍّ. أنت الوثيقة الوحيدة التي احتجتها دائماً.</p>
+    </div>
+  </div>
+  <div class="formula fade-in d3">
+    <span class="formula-label cinzel">The Sovereign Formula · Final</span>
+    <div class="f-line en">Sovereign Power <span class="op">≠</span> Absence of pain</div>
+    <div class="f-line th">อำนาจอธิปไตย <span class="op">≠</span> การขาดความเจ็บปวด</div>
+    <div class="f-line ar">السيادة الروحية <span class="op">≠</span> غياب الألم</div>
+    <div class="f-div"></div>
+    <div class="f-line en">Sovereign Power <span class="op">=</span> <span class="res">Full self, present, within every condition</span></div>
+    <div class="f-line th">อำนาจอธิปไตย <span class="op">=</span> <span class="res">ตัวตนเต็มๆ อยู่กับทุกสถานการณ์</span></div>
+    <div class="f-line ar">السيادة الروحية <span class="op">=</span> <span class="res">الذات كاملةً، حاضرة، في كل حال</span></div>
+    <div class="f-div"></div>
+    <div class="f-line en">She was the only document <span class="op">she ever</span> <span class="res">needed.</span></div>
+    <div class="f-line th">เธอคือเอกสารเดียว <span class="op">ที่เธอ</span> <span class="res">เคยต้องการ</span></div>
+    <div class="f-line ar">كانت هي الوثيقة الوحيدة <span class="op">التي</span> <span class="res">احتاجتها دائماً.</span></div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     EPILOGUE
+════════════════════════════════════════════════ -->
+<section class="part-opener fade-in">
+  <span class="part-number">Epilogue</span>
+  <h2 class="part-title">
+    <span class="en">The Law of the Loop</span>
+    <span class="th">กฎแห่งวงจร</span>
+    <span class="ar">قانون الحلقة</span>
+  </h2>
+  <div class="part-rule"></div>
+  <p class="part-epigraph en">The loop does not end when you change the location. It ends when you change the frequency.</p>
+  <p class="part-epigraph th">วงจรไม่จบเมื่อคุณเปลี่ยนสถานที่ มันจบเมื่อคุณเปลี่ยนความถี่</p>
+  <p class="part-epigraph ar">لا تنتهي الحلقة حين تغيّر المكان. تنتهي حين تغيّر التردد.</p>
+</section>
+
+<div class="section">
+  <div class="col">
+    <p class="body-text en fade-in"><em>"I ran from J in my hometown and found Simon in The Emerald Coast. I ran from Simon and found Joker. Every iteration: more complex, more dangerous, more deeply embedded."</em></p>
+    <p class="body-text th fade-in"><em>"ฉันหนีจาก J ในบ้านเกิดและพบ Simon ใน The Emerald Coast ฉันหนีจาก Simon และพบ Joker แต่ละรอบ: ซับซ้อนขึ้น อันตรายขึ้น ฝังลึกขึ้น"</em></p>
+    <p class="body-text ar fade-in"><em>"هربت من J في مسقط رأسي فوجدت سيمون في الساحل الزمردي. هربت من سيمون فوجدت جوكر. كل تكرار: أكثر تعقيداً، أكثر خطراً، أعمق تجذّراً."</em></p>
+
+    <div class="equation fade-in d1">
+      <span class="equation-label cinzel">The Complete Sovereign Equation</span>
+      <div class="eq-line en">Exit by geography <span class="op">+</span> Unhealed wound <span class="op">=</span> <span class="res">New version, same equation</span></div>
+      <div class="eq-line th">ออกไปทางภูมิศาสตร์ <span class="op">+</span> บาดแผลยังไม่หาย <span class="op">=</span> <span class="res">เวอร์ชันใหม่ สมการเดิม</span></div>
+      <div class="eq-line ar">خروج جغرافي <span class="op">+</span> جرح غير مُشفى <span class="op">=</span> <span class="res">نسخة جديدة، معادلة ذاتها</span></div>
+      <div class="eq-div"></div>
+      <div class="eq-line en">Exit by frequency <span class="op">+</span> Full self-possession <span class="op">=</span> <span class="res">The loop dissolves permanently</span></div>
+      <div class="eq-line th">ออกไปทางความถี่ <span class="op">+</span> ครอบครองตัวเองสมบูรณ์ <span class="op">=</span> <span class="res">วงจรสลายอย่างถาวร</span></div>
+      <div class="eq-line ar">خروج بالتردد <span class="op">+</span> امتلاك كامل للذات <span class="op">=</span> <span class="res">الحلقة تنحلّ نهائياً</span></div>
+      <div class="eq-div"></div>
+      <div class="eq-line en">Sovereign Power <span class="op">≠</span> The absence of being hurt</div>
+      <div class="eq-line th">อำนาจอธิปไตย <span class="op">≠</span> การไม่เจ็บปวด</div>
+      <div class="eq-line ar">السيادة الروحية <span class="op">≠</span> غياب الأذى</div>
+      <div class="eq-div"></div>
+      <div class="eq-line en">Sovereign Power <span class="op">=</span> <span class="res">The presence of self — within the hurt, complete</span></div>
+      <div class="eq-line th">อำนาจอธิปไตย <span class="op">=</span> <span class="res">การมีอยู่ของตัวตน — ภายในความเจ็บปวด สมบูรณ์</span></div>
+      <div class="eq-line ar">السيادة الروحية <span class="op">=</span> <span class="res">حضور الذات — داخل الألم، كاملة</span></div>
+    </div>
+
+    <div class="sq fade-in d2">
+      <blockquote class="en">She left with borrowed sandals, a passport, and one coin. She left as the only document she had ever needed — herself, unredacted, unforgiving of nothing, sovereign over everything.</blockquote>
+      <blockquote class="th">เธอออกไปพร้อมรองเท้าแตะที่ยืมมา หนังสือเดินทาง และเหรียญหนึ่งเหรียญ เธอออกไปในฐานะเอกสารเดียวที่เธอเคยต้องการ — ตัวตนที่ไม่ถูกลบเลือน อธิปไตยเหนือทุกสิ่ง</blockquote>
+      <blockquote class="ar">خرجت بنعل مستعار وجواز سفر وعملة واحدة. خرجت بوصفها الوثيقة الوحيدة التي احتاجتها دائماً — نفسها، غير مُنقَّحة، عافية الجميع، ذات سيادة على كل شيء.</blockquote>
+      <cite>— The Sovereign Awakening · Final Chapter</cite>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     CTA
+════════════════════════════════════════════════ -->
+<section class="cta fade-in">
+  <span class="cta-over cinzel">
+    <span class="en">The Next Initiation</span>
+    <span class="th">การเริ่มต้นครั้งต่อไป</span>
+    <span class="ar">البدء التالي</span>
+  </span>
+  <h2 class="cta-title">
+    <span class="en">The Sovereign<br>Awakening Course</span>
+    <span class="th">คอร์ส<br>The Sovereign Awakening</span>
+    <span class="ar">دورة<br>الصحوة السيادية</span>
+  </h2>
+  <p class="cta-body en">This book is the map. The course is the territory. A live international program for those ready to dissolve the loop, reclaim their frequency, and become ungovernable — not by force, but by full self-possession.</p>
+  <p class="cta-body th">หนังสือนี้คือแผนที่ คอร์สคือดินแดนที่แท้จริง โปรแกรมนานาชาติสำหรับผู้ที่พร้อมจะทำลายวงจรพิษ คืนความถี่ของตัวเอง และกลายเป็นสิ่งที่ปกครองไม่ได้ — ไม่ใช่ด้วยกำลัง แต่ด้วยการครอบครองตัวเองอย่างสมบูรณ์</p>
+  <p class="cta-body ar">هذا الكتاب هو الخريطة، والدورة هي الأرض الحقيقية. برنامج دولي حي لمن هم مستعدون لحلّ الحلقة المفرغة، واسترداد ترددهم، والأصبح غير قابلين للسيطرة — لا بالقوة، بل بالامتلاك الكامل للذات.</p>
+
+  <a class="cta-btn" href="#">
+    <span class="en">Enter the Course →</span>
+    <span class="th">เข้าร่วมคอร์ส →</span>
+    <span class="ar">ادخل الدورة ←</span>
+  </a>
+
+  <div class="cta-stats">
+    <div>
+      <span class="stat-val">3</span>
+      <span class="stat-label cinzel">
+        <span class="en">Core Modules</span>
+        <span class="th">โมดูลหลัก</span>
+        <span class="ar">وحدات أساسية</span>
+      </span>
+    </div>
+    <div>
+      <span class="stat-val">∞</span>
+      <span class="stat-label cinzel">
+        <span class="en">Loop Dissolvers</span>
+        <span class="th">ตัวทำลายวงจร</span>
+        <span class="ar">محلّلات الحلقة</span>
+      </span>
+    </div>
+    <div>
+      <span class="stat-val">1</span>
+      <span class="stat-label cinzel">
+        <span class="en">Sovereign Outcome</span>
+        <span class="th">ผลลัพธ์อธิปไตย</span>
+        <span class="ar">نتيجة سيادية</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+</div><!-- /golden-frame -->
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer>
+  <p class="footer-brand">Aida xU &nbsp;·&nbsp; The Sovereign Awakening &nbsp;·&nbsp; All Rights Reserved</p>
+  <p class="footer-tag en">The Matrix cannot process what it does not own.</p>
+  <p class="footer-tag th">ระบบควบคุมไม่ได้สิ่งที่ไม่ได้เป็นเจ้าของ</p>
+  <p class="footer-tag ar">لا يملك النظام ما لا يعود إليه</p>
+  <p class="footer-tag" style="margin-top:24px; font-family:'Cinzel',serif; font-size:8px; letter-spacing:.6em; text-transform:uppercase; color:var(--gold); opacity:1;">⬡ &nbsp; SYSTEM STATUS: SOVEREIGN RECOGNIZED &nbsp; ⬡</p>
+</footer>
+
+
+<script>
+/* ══════════════════════════════════════
+   LANGUAGE TOGGLE
+══════════════════════════════════════ */
+const root = document.documentElement;
+const btns = document.querySelectorAll('.lang-btn');
+
+function setLanguage(lang) {
+  // 1. Mark switching for CSS animation trigger
+  root.classList.add('switching');
+
+  // 2. Swap data-lang attribute (drives all CSS show/hide)
+  root.setAttribute('data-lang', lang);
+
+  // 3. Update active button
+  btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+
+  // 4. RTL for Arabic
+  document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+  document.body.style.textAlign = lang === 'ar' ? 'right' : '';
+
+  // 5. Remove switching class after animation
+  setTimeout(() => root.classList.remove('switching'), 600);
+}
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+});
+
+
+/* ══════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      // Stagger children tagged with delay classes
+      e.target.querySelectorAll('.d1,.d2,.d3').forEach(child => {
+        child.classList.add('vis');
+      });
+    }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
